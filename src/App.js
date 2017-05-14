@@ -17,7 +17,7 @@ class App extends Component {
           <form>
             <input type="text" />
           </form>
-          <TodoList todos={this.props.todos} />
+          <TodoList todos={this.props.todos} toggleTodo={this.props.toggleTodo} />
         </div>
       </div>
     );

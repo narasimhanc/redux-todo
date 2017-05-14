@@ -14,12 +14,18 @@ const initState = {
   ]
 }
 
-
-
 const store = createStore(reducer, initState)
 
-const state = store.getState()
-ReactDOM.render(
-  <App todos={state.todos} />,
-  document.getElementById('root')
-)
+const toggleTodo = (id) => store.dispatch({type: 'TOGGLE_TODO', payload: id})
+
+const render = () => {
+  const state = store.getState()
+  ReactDOM.render(
+    <App todos={state.todos}
+      toggleTodo={toggleTodo} />,
+    document.getElementById('root')
+  )
+}
+
+render()
+store.subscribe(render)
