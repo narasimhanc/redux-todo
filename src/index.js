@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import { createStore } from 'redux'
-import reducer, {toggleTodo} from './reducers/todo'
+import reducer, {toggleTodo, changeCurrentTodo} from './reducers/todo'
 
 const initState = {
   todos: [
@@ -11,18 +11,22 @@ const initState = {
     {id: 2, name:'Create Initial State', isComplete: true},
     {id: 3, name:'Use state to render UI', isComplete: false},
     {id: 4, name:'Control state with Redux', isComplete: false}
-  ]
+  ],
+  currentTodo: ''
 }
 
 const store = createStore(reducer, initState)
 
 const toggle = (id) => store.dispatch(toggleTodo(id))
+const handleTodoChange = (val) => store.dispatch(changeCurrentTodo(val))
 
 const render = () => {
   const state = store.getState()
   ReactDOM.render(
     <App todos={state.todos}
-      toggleTodo={toggle} />,
+      currentTodo={state.currentTodo}
+      toggleTodo={toggle}
+      handleTodoChange={handleTodoChange} />,
     document.getElementById('root')
   )
 }

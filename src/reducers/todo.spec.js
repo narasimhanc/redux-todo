@@ -20,4 +20,17 @@ describe('Todo Reducer', () => {
     const result = reducer(initState, {type:'TOGGLE_TODO', payload: 2})
     expect(result).toEqual(expectedState)
   })
+
+  test('changes form input', () => {
+    const initState = {
+      todos: [],
+      currentTodo: ''
+    }
+    const expectedState = {
+      todos: [],
+      currentTodo: 'abc'
+    }
+    const result = reducer(initState, {type:'CURRENT_TODO_CHANGE', payload: 'abc'})
+    expect(result).toEqual(expectedState)
+  })
 })
