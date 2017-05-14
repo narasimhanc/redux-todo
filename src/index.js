@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import { createStore } from 'redux'
+import reducer from './reducers/todo'
 
 const initState = {
   todos: [
@@ -13,11 +14,7 @@ const initState = {
   ]
 }
 
-const reducer = function(state, action) {
-  console.log('state', state)
-  console.log('action', action)
-  return state
-}
+
 
 const store = createStore(reducer, initState)
 
