@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import { createStore } from 'redux'
-import reducer from './reducers/todo'
+import reducer, {toggleTodo} from './reducers/todo'
 
 const initState = {
   todos: [
@@ -16,13 +16,13 @@ const initState = {
 
 const store = createStore(reducer, initState)
 
-const toggleTodo = (id) => store.dispatch({type: 'TOGGLE_TODO', payload: id})
+const toggle = (id) => store.dispatch(toggleTodo(id))
 
 const render = () => {
   const state = store.getState()
   ReactDOM.render(
     <App todos={state.todos}
-      toggleTodo={toggleTodo} />,
+      toggleTodo={toggle} />,
     document.getElementById('root')
   )
 }
