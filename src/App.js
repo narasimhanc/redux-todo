@@ -19,7 +19,7 @@ class App extends Component {
         </div>
         <div className="Todo-App">
           <form>
-            <input type="text" onChange={this.handleTodoInput.bind(this)} value={this.props.currentTodo} />
+            <input type="text" onChange={this.handleTodoInput.bind(this)} value={this.props.form.currentTodo} />
           </form>
           <TodoList todos={this.props.todos} toggleTodo={this.props.toggleTodo} />
         </div>
