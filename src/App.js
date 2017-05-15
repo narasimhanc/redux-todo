@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import TodoList from './components/TodoList'
-
-
+import { connect } from 'react-redux'
 
 class App extends Component {
   handleTodoInput (evt) {
@@ -28,4 +27,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  (state) => ({todos: state.todos, form: state.form})
+)(App)
