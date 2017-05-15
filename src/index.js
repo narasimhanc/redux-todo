@@ -4,8 +4,8 @@ import App from './App';
 import './index.css';
 import { createStore, combineReducers } from 'redux'
 import {Provider} from 'react-redux'
-import todoReducer, {toggleTodo} from './reducers/todo'
-import formReducer, {changeCurrentTodo} from './reducers/form'
+import todoReducer from './reducers/todo'
+import formReducer from './reducers/form'
 
 const reducer = combineReducers({
   todos: todoReducer,
@@ -13,14 +13,9 @@ const reducer = combineReducers({
 })
 const store = createStore(reducer)
 
-const toggle = (id) => store.dispatch(toggleTodo(id))
-const handleTodoChange = (val) => store.dispatch(changeCurrentTodo(val))
-
-
 ReactDOM.render(
   <Provider store={store}>
-    <App toggleTodo={toggle}
-      handleTodoChange={handleTodoChange} />
+    <App />
   </Provider>,
   document.getElementById('root')
 )

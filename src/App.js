@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import TodoList from './components/TodoList'
 import { connect } from 'react-redux'
+import TodoList from './components/TodoList'
+import {toggleTodo} from './reducers/todo'
+import {changeCurrentTodo} from './reducers/form'
 
 class App extends Component {
   handleTodoInput (evt) {
@@ -28,5 +30,9 @@ class App extends Component {
 }
 
 export default connect(
-  (state) => ({todos: state.todos, form: state.form})
+  (state) => ({todos: state.todos, form: state.form}),
+  (dispatch) => ({
+    toggleTodo: (id) => dispatch(toggleTodo(id)),
+    handleTodoChange: (val) => dispatch(changeCurrentTodo(val))
+  })
 )(App)
