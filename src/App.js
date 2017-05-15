@@ -9,7 +9,7 @@ import {changeCurrentTodo} from './reducers/form'
 class App extends Component {
   handleTodoInput (evt) {
     const newVal = evt.target.value
-    this.props.handleTodoChange(newVal)
+    this.props.changeCurrentTodo(newVal)
   }
   render() {
     return (
@@ -31,8 +31,8 @@ class App extends Component {
 
 export default connect(
   (state) => ({todos: state.todos, form: state.form}),
-  (dispatch) => ({
-    toggleTodo: (id) => dispatch(toggleTodo(id)),
-    handleTodoChange: (val) => dispatch(changeCurrentTodo(val))
-  })
+  {
+    toggleTodo,
+    changeCurrentTodo
+  }
 )(App)
